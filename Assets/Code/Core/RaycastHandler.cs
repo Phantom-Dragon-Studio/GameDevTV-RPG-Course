@@ -6,7 +6,7 @@ namespace Code.Core {
 
         public RaycastHit? RaycastPointFromCamera(Camera camera, Vector3 point) {
             m_Ray = camera.ScreenPointToRay(point);
-            var hasHit = Physics.Raycast(m_Ray.origin, m_Ray.direction, out RaycastHit raycastHit);
+            bool hasHit = Physics.Raycast(m_Ray.origin, m_Ray.direction, out RaycastHit raycastHit);
 
             if (hasHit)
                 return raycastHit;
@@ -16,7 +16,7 @@ namespace Code.Core {
         
         public RaycastHit? RaycastPointFromCamera(Camera camera, Vector3 point, LayerMask mask) {
             m_Ray = camera.ScreenPointToRay(point);
-            var hasHit = Physics.Raycast(m_Ray, out RaycastHit raycastHit,Mathf.Infinity, mask);
+            bool hasHit = Physics.Raycast(m_Ray, out RaycastHit raycastHit,Mathf.Infinity, mask);
 
             if (hasHit)
                 return raycastHit;

@@ -1157,10 +1157,6 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 970537741, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
-      propertyPath: fighter
-      value: 
-      objectReference: {fileID: 6566850290956199602}
     - target: {fileID: 1626830133014983261, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1175,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324921301138981030, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.982
       objectReference: {fileID: 0}
     - target: {fileID: 3324921301138981030, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1211,17 +1207,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
---- !u!114 &6566850290956199602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6063296194773123342, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
-  m_PrefabInstance: {fileID: 6566850290956199601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e6ba17e614b46ebab3dc586529ab062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6566850290956199605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3324921301138981030, guid: fd7749c8f67d1c14c95b309480f8bfd4, type: 3}
