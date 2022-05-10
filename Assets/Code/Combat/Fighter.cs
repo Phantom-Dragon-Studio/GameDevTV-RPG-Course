@@ -4,9 +4,7 @@ using UnityEngine;
 
 namespace Code.Combat {
     public class Fighter : MonoBehaviour {
-        
-        Transform m_Target;
-        Mover m_Mover;
+        [SerializeField] private float m_attackRange;
 
         private void Awake() {
             m_Mover = GetComponent<Mover>();
@@ -17,10 +15,24 @@ namespace Code.Combat {
             Debug.Log("Attack!", m_Target);
         }
 
-        private void Update() {
-            if (m_Target is not null) {
-                m_Mover.MoveTo(m_Target.transform.position);
-            }
+        public void Cancel() {
+            m_Target = null;
         }
+
+        private bool InRange() {
+            return m_attackRange >= Vector3.Distance(m_Target.position, transform.position);
+        }
+
+        private void Update() {
+            if (m_Target is null) return;
+            
+            if (InRange())
+                m_Mover.Stop();
+            else 
+                m_Mover.MoveTo(m_Target.transform.position);
+        }
+
+        private Transform m_Target;
+        private Mover m_Mover;
     }
 }

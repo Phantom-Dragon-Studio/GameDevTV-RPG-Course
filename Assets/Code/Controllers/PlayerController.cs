@@ -31,7 +31,7 @@ namespace Code.Controllers {
             if (hitData is null) return false;
             
             if(Input.GetMouseButton(0))
-                m_Mover.MoveTo(hitData.Value.point);
+                m_Mover.MoveToAction(hitData.Value.point);
 
             return true;
         }
