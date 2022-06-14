@@ -1,11 +1,11 @@
 using UnityEngine;
 
 namespace Code.Core {
-    public class FollowCamera : MonoBehaviour
-    {
+    public class FollowCamera : MonoBehaviour {
         [SerializeField] private Transform target;
 
-        void LateUpdate() {
+        void LateUpdate()
+        {
             transform.position = target.position;
         }
     }
