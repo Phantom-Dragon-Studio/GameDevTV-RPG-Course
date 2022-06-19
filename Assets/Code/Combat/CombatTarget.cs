@@ -1,7 +1,7 @@
-﻿using App.Code.Combat;
+﻿using App.Code.Core;
 using UnityEngine;
 
-namespace Code.Combat {
+namespace App.Code.Combat {
     [RequireComponent(typeof(Lifepoints))]
     public class CombatTarget : MonoBehaviour {
           

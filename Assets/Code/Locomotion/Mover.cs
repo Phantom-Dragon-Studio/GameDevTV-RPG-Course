@@ -1,9 +1,11 @@
-using Code.Core;
+using App.Code.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Code.Locomotion {
+namespace App.Code.Locomotion {
     public class Mover : MonoBehaviour, IAction {
+        [SerializeField] private Lifepoints lifepoints;
+
         private void Awake()
         {
             m_Agent = GetComponent<NavMeshAgent>();
@@ -13,6 +15,7 @@ namespace Code.Locomotion {
 
         private void Update()
         {
+            m_Agent.enabled = !lifepoints.IsDead();
             UpdateAnimator();
         }
 

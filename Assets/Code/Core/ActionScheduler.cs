@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Core {
+namespace App.Code.Core {
     public class ActionScheduler : MonoBehaviour{
         private IAction m_CurrentAction;
         
@@ -11,6 +11,11 @@ namespace Code.Core {
 
             m_CurrentAction?.Cancel();
             m_CurrentAction = action;
+        }
+
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
         }
     }
 }

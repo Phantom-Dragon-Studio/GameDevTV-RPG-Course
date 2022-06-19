@@ -1,9 +1,9 @@
-﻿using Code.Combat;
-using Code.Core;
-using Code.Locomotion;
+﻿using App.Code.Combat;
+using App.Code.Core;
+using App.Code.Locomotion;
 using UnityEngine;
 
-namespace Code.Controllers {
+namespace App.Code.Controllers {
     public class PlayerController : MonoBehaviour {
         [SerializeField] private LayerMask movableMask;
         [SerializeField] private LayerMask attackableMask;
@@ -18,16 +18,13 @@ namespace Code.Controllers {
 
         private void Update()
         {
-            if (TryAttack())
+            if (InteractWithCombat())
                 return;
 
-            if (TryMoveToCursor())
-                return;
-
-            Debug.Log("Nothing to do");
+            InteractWithMovement();
         }
 
-        private bool TryMoveToCursor()
+        private bool InteractWithMovement()
         {
             RaycastHit? hitData = m_RaycastHandler.RaycastPointFromCamera(camera, Input.mousePosition, movableMask);
             if (hitData is null) return false;
@@ -38,7 +35,7 @@ namespace Code.Controllers {
             return true;
         }
 
-        private bool TryAttack()
+        private bool InteractWithCombat()
         {
             RaycastHit[] hitsData = m_RaycastHandler.RaycastAll(camera, Input.mousePosition, attackableMask);
             if (hitsData is null) return false;
@@ -46,12 +43,12 @@ namespace Code.Controllers {
             foreach (RaycastHit hitData in hitsData) {
                 CombatTarget target = hitData.transform.GetComponent<CombatTarget>();
 
-                if (!fighter.CanAttack(target)) {
+                if (!fighter.CanAttack(target.gameObject)) {
                     continue;
                 }
 
-                if (Input.GetMouseButtonDown(0)) {
-                    fighter.Attack(target);
+                if (Input.GetMouseButton(0)) {
+                    fighter.Attack(target.gameObject);
                 }
 
                 return true;

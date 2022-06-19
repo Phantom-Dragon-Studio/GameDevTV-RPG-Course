@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace App.Code.Combat {
+namespace App.Code.Core {
     public class Lifepoints : MonoBehaviour {
         [SerializeField] private float healthPoints = 100f;
 
@@ -31,6 +30,7 @@ namespace App.Code.Combat {
 
             m_IsDead = true;
             GetComponent<Animator>().SetTrigger(_DIE);
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         private static readonly int _DIE = Animator.StringToHash("die");

@@ -1,10 +1,8 @@
-﻿using App.Code.Combat;
-using Code.Core;
-using Code.Locomotion;
+﻿using App.Code.Core;
+using App.Code.Locomotion;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Code.Combat {
+namespace App.Code.Combat {
     public class Fighter : MonoBehaviour, IAction {
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float attackSpeed = 1f;
@@ -22,7 +20,7 @@ namespace Code.Combat {
             m_Animator = GetComponent<Animator>();
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if (combatTarget is null)
                 return false;
@@ -32,7 +30,7 @@ namespace Code.Combat {
             return targetToTest is not null && !targetToTest.IsDead();
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             if (!combatTarget) return;
 
@@ -91,7 +89,7 @@ namespace Code.Combat {
         private Lifepoints m_Target;
         private Mover m_Mover;
         private Animator m_Animator;
-        private float m_TimeSinceLastAttack;
+        private float m_TimeSinceLastAttack = Mathf.Infinity;
         private static readonly int _ATTACK = Animator.StringToHash("attack");
         private static readonly int _STOP_ATTACK = Animator.StringToHash("stopAttack");
     }
